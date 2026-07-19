@@ -33,14 +33,14 @@ A university library + TA team currently tracks book borrow status and student g
 
 ### 4.1 Module Responsibility Table
 
-| File           | Owns                                                                                                               | Must NOT contain                                 |
-| -------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------ |
-| `data.js`      | Raw seed arrays: `students[]`, `books[]`                                                                           | Any function logic, DOM refs                     |
-| `state.js`     | Closure factories: `createBorrowCounter()`, `createGradeVault()` — private counters/flags exposed only via methods | `document.*`, `fetch`                            |
-| `analytics.js` | Pure functions: `categorizeStudents()`, `averageGrade()`, `borrowRate()` — all via map/filter/reduce               | Mutation of input arrays, `document.*`           |
-| `dom.js`       | Reusable render helpers: `renderStudentCard()`, `renderBookCard()`, `toggleBorrowedClass()`                        | Business logic, data transformation, `fetch`     |
-| `weather.js`   | `fetchWeather(city)` — fetch + JSON.parse/stringify, returns a promise                                             | DOM writes, state mutation                       |
-| `app.js`       | **Entrypoint.** Imports all modules, decides execution order, wires event listeners                                | Reusable logic of its own — it only orchestrates |
+| File           | Owns                                                                                                                       | Must NOT contain                                 |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| `data.js`      | Raw seed arrays: `students[]`, `books[]`                                                                                   | Any function logic, DOM refs                     |
+| `state.js`     | Closure factories: `createBookAvailabilityStore()`, `createGradeVault()` — private counters/flags exposed only via methods | `document.*`, `fetch`                            |
+| `analytics.js` | Pure functions: `categorizeStudents()`, `averageGrade()`, `borrowRate()` — all via map/filter/reduce                       | Mutation of input arrays, `document.*`           |
+| `dom.js`       | Reusable render helpers: `renderStudentCard()`, `renderBookCard()`, `toggleBorrowedClass()`                                | Business logic, data transformation, `fetch`     |
+| `weather.js`   | `fetchWeather(city)` — fetch + JSON.parse/stringify, returns a promise                                                     | DOM writes, state mutation                       |
+| `app.js`       | **Entrypoint.** Imports all modules, decides execution order, wires event listeners                                        | Reusable logic of its own — it only orchestrates |
 
 ### 4.2 Entrypoint Sequence (`app.js`)
 
